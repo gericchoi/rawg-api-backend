@@ -8,9 +8,12 @@ import https from 'https';
 const app = express();
 const PORT = 3001;
 
-app.use(cors({
-  origin: 'http://rawg-api.surge.sh',
-}));
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://rawg-api.surge.sh');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
 // Use custom agent only in development to bypass self-signed cert issues
 const isDev = process.env.NODE_ENV !== 'production';
