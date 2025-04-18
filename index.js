@@ -9,7 +9,7 @@ const app = express();
 const PORT = 3001;
 
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow only this origin
+  origin: 'http://rawg-api.surge.sh',
 }));
 
 // Use custom agent only in development to bypass self-signed cert issues
